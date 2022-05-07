@@ -1,6 +1,6 @@
-import express from "express";
+import express, { Request, Response } from "express";
 
 const server = express();
 const router = express.Router();
 
-export { server, router };
+export { server, router, Request, Response };
