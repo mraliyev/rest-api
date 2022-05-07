@@ -12,7 +12,7 @@
     "rest",
     "api"
   ],
-  "author": "emojo",
+  "author": "Emin Ali",
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.17.13",
