@@ -1,5 +1,5 @@
-import { Request, Response } from "../../core";
-import workoutService from "../services";
+import { Request, Response } from '../../core';
+import workoutService from '../services';
 
 function getAll(req: Request, res: Response) {
   const response = workoutService.getAll();

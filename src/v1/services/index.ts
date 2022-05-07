@@ -1,1 +1,1 @@
-export { default } from "./workoutService";
+export { default } from './workoutService';

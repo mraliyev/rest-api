@@ -1,1 +1,1 @@
-export { default } from "./workoutRoutes";
+export { default } from './workoutRoutes';
