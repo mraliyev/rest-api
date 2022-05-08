@@ -1,10 +1,11 @@
 import { Request, Response } from '../../core';
+import { CreateWorkoutDTO } from '../dto/create-workout.dto';
 import workoutService from '../services';
 
 function getAll(req: Request, res: Response) {
-  const response = workoutService.getAll();
+  const workouts = workoutService.getAll();
 
-  res.json({ response });
+  res.status(200).json({ status: 'OK', data: workouts });
 }
 
 function getOne(id: string) {
@@ -12,7 +13,22 @@ function getOne(id: string) {
 }
 
 function createWorkout(req: Request, res: Response) {
-  return workoutService.create(req, res);
+  const { body } = req;
+
+  if (!body.name || !body.mode) {
+    return;
+  }
+
+  const newWorkout: CreateWorkoutDTO = {
+    name: body.name,
+    mode: body.mode,
+    equipment: body.equipment,
+    exercises: body.exercises,
+    trainerTips: body.trainerTips,
+  };
+
+  const workout = workoutService.create(newWorkout);
+  res.status(201).json({ status: 'OK', data: workout });
 }
 
 function updateWorkout(id: string, data = {}) {

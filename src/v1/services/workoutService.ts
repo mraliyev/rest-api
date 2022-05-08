@@ -1,5 +1,6 @@
+import { randomUUID } from 'crypto';
 import Workout from '../../database';
-import { Request, Response } from '../../core';
+import { CreateWorkoutDTO } from '../dto/create-workout.dto';
 
 export function getAll() {
   return Workout.findAll();
@@ -9,8 +10,15 @@ export function getOne(id: string) {
   return 'Not implemented';
 }
 
-export function create(req: Request, res: Response) {
-  return 'Not implemented';
+export function create(workout: CreateWorkoutDTO) {
+  const newWorkout = {
+    ...workout,
+    id: randomUUID({ disableEntropyCache: true }),
+    createdAt: new Date().toLocaleString('en-US', { timeZone: 'UTC' }),
+    updatedAt: new Date().toLocaleString('en-US', { timeZone: 'UTC' }),
+  };
+
+  return Workout.create(newWorkout);
 }
 
 export function update(id: string, data: object) {
